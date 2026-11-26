@@ -625,7 +625,14 @@ em { font-style: normal; color: var(--blue-text); }
   position: fixed;
   z-index: 40;
   visibility: hidden;
-  transition: transform .3s ease, opacity .3s ease, visibility .3s;
+  /* ゆっくり滑らかに：出始めは素早く、最後はふわっと止まる easeOutQuint */
+  transition:
+    transform .7s cubic-bezier(.22, 1, .36, 1),
+    opacity .6s cubic-bezier(.22, 1, .36, 1),
+    visibility .7s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fixed-cta { transition: opacity .3s linear, visibility .3s; }
 }
 .fixed-cta.is-visible { transform: none; opacity: 1; visibility: visible; }
 .fixed-cta__btn { display: flex; align-items: center; text-decoration: none; }

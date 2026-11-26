@@ -493,7 +493,8 @@ em { font-style: normal; color: var(--blue-text); }
 }
 .flow-card__img { width: 96px; height: 96px; border-radius: 50%; background: var(--bg-tint); }
 .flow-card h3 { font-size: 15px; line-height: 1.45; color: var(--navy); text-align: center; }
-.flow-card p { font-size: 12px; line-height: 1.75; color: var(--text); text-wrap: pretty; }
+/* 狭いカード内で text-wrap: pretty を使うと行が早めに折り返され右側が空くため、幅いっぱいに両端揃えで流す */
+.flow-card p { align-self: stretch; font-size: 12px; line-height: 1.75; color: var(--text); text-align: justify; }
 
 /* =========================================================
    FAQ アコーディオン（details/summary）

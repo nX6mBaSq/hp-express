@@ -387,7 +387,8 @@ em { font-style: normal; color: var(--blue-text); }
 .reason__body { display: flex; flex-direction: column; gap: 6px; }
 .reason__no { font-size: 15px; font-weight: 700; color: var(--blue); line-height: 1.2; }
 .reason h3 { font-size: 17px; line-height: 1.45; color: var(--navy); word-break: auto-phrase; }
-.reason p { font-size: 13px; line-height: 1.7; color: var(--text); word-break: auto-phrase; text-wrap: pretty; }
+/* 狭い列で pretty / auto-phrase を使うと早めに折り返して右側が空くため、幅いっぱいに両端揃えで流す */
+.reason p { font-size: 13px; line-height: 1.7; color: var(--text); text-align: justify; }
 
 /* =========================================================
    トップ：こんな方におすすめ

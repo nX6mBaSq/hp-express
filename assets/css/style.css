@@ -267,9 +267,9 @@ em { font-style: normal; color: var(--blue-text); }
 .fv h1 { font-size: 36px; line-height: 1.4; font-weight: 900; color: var(--navy); letter-spacing: .01em; }
 .fv__sub { font-size: 16px; line-height: 1.75; color: var(--text); font-weight: 500; }
 
+/* SP：高さは画像の比率に任せる（固定高さだと画像の上に空白ができ、見出しとの間が間延びするため） */
 .fv__ill {
   position: relative;
-  height: 250px;
   margin: 0 calc(var(--gutter) * -1);
   background: none;
   font-size: 11px;
@@ -283,7 +283,7 @@ em { font-style: normal; color: var(--blue-text); }
   z-index: -1;
 }
 .fv__ill { z-index: 0; display: flex; align-items: flex-end; justify-content: center; }
-.fv__ill img { width: 100%; height: 100%; padding: 0 10px; object-fit: contain; object-position: center bottom; }
+.fv__ill img { width: 100%; height: auto; padding: 0 10px; object-fit: contain; object-position: center bottom; }
 
 .price-big { display: flex; align-items: baseline; justify-content: center; color: var(--navy); white-space: nowrap; }
 .price-big__pre { font-size: 24px; font-weight: 700; margin-right: 10px; }
@@ -810,6 +810,31 @@ body.has-fixed-cta { padding-bottom: 76px; }
 .legal-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.8; }
 .legal-table th, .legal-table td { text-align: left; vertical-align: top; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
 .legal-table th { width: 8.5em; padding-right: 12px; font-weight: 700; color: var(--navy); }
+
+/* Mobile body copy: improve readability without changing the layout. */
+@media (max-width: 959px) {
+  /* Tighten mobile section spacing (64px to 52px). */
+  main > .sec,
+  main > .cta {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .reason p,
+  .flow-card p,
+  main > .sec .faq__a {
+    font-size: 15px;
+  }
+
+  .reason p,
+  .flow-card p,
+  main > .sec .check-box .ck,
+  main > .sec .dot-list .ck,
+  main > .sec .faq__a,
+  main > .cta p {
+    color: #243D53;
+  }
+}
 
 /* =========================================================
    PC（拡張）

@@ -615,24 +615,135 @@ em { font-style: normal; color: var(--blue-text); }
 }
 .footer-legal__sep { display: none; width: 1px; height: 11px; background: rgba(255, 255, 255, .35); }
 
-/* SP下部固定CTAバー（FV通過後に表示） */
+/* SP追従CTA（FV通過後に表示／下部の相談欄・フッターが見えている間は隠す）
+   見た目は3種類（HTMLの修飾クラスで切り替え）：
+   .fixed-cta--corner＝右下の吹き出し付き緑ボタン（採用中）
+   .fixed-cta--center＝下部中央の緑ピル（line-icon-reverse.svg ＋「LINEで気軽に相談」）
+   .fixed-cta--pill  ＝右下の白地ピル（line-icon.svg ＋「LINEで気軽に相談」＋ fa-chevron-right）
+   .fixed-cta--tab   ＝右端の縦タブ（line-icon-reverse.svg ＋「ＬＩＮＥで相談」） */
 .fixed-cta {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
   z-index: 40;
-  padding: 10px 16px 12px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, .96);
-  border-top: 1px solid var(--line-soft);
-  box-shadow: 0 -6px 16px rgba(11, 41, 68, .06);
-  transform: translateY(110%);
   visibility: hidden;
-  transition: transform .25s ease, visibility .25s;
+  transition: transform .3s ease, opacity .3s ease, visibility .3s;
 }
-.fixed-cta.is-visible { transform: none; visibility: visible; }
-.fixed-cta .btn { height: 52px; font-size: 16px; }
-.fixed-cta .line-icon { width: 28px; height: 28px; }
-body.has-fixed-cta { padding-bottom: 76px; }
+.fixed-cta.is-visible { transform: none; opacity: 1; visibility: visible; }
+.fixed-cta__btn { display: flex; align-items: center; text-decoration: none; }
+
+/* 右下の吹き出し付き緑ボタン：上に白い吹き出し「ご質問だけでもOK」、尾はボタンを指す */
+.fixed-cta--corner {
+  right: 14px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translateY(16px);
+}
+.fixed-cta--corner .fixed-cta__btn {
+  flex-direction: column; align-items: flex-end; gap: 9px;
+  color: #fff;
+}
+.fixed-cta--corner .fixed-cta__btn:hover { color: #fff; }
+.fixed-cta--corner .fixed-cta__bubble {
+  position: relative;
+  margin-right: 10px;
+  padding: 7px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--navy);
+  font-size: 12px; font-weight: 700; line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(11, 41, 68, .12);
+}
+/* 尾：枠線色の三角の上に白い三角を重ねて、線付きの尾にする */
+.fixed-cta--corner .fixed-cta__bubble::before,
+.fixed-cta--corner .fixed-cta__bubble::after {
+  content: "";
+  position: absolute; right: 22px;
+  border-style: solid; border-color: transparent;
+}
+.fixed-cta--corner .fixed-cta__bubble::before { bottom: -7px; border-width: 7px 6px 0; border-top-color: var(--line); }
+.fixed-cta--corner .fixed-cta__bubble::after  { bottom: -5px; right: 23px; border-width: 6px 5px 0; border-top-color: #fff; }
+.fixed-cta--corner .fixed-cta__main {
+  display: flex; align-items: center; gap: 8px;
+  height: 52px;
+  padding: 0 22px 0 14px;
+  border-radius: 999px;
+  /* 白フチはやめ、ごく淡い上下グラデーション＋重ねた影で立体感を出す */
+  background: linear-gradient(180deg, #0BD15E 0%, var(--line-green) 55%, #05B54D 100%);
+  font-size: 15px; font-weight: 700; line-height: 1; letter-spacing: .02em;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .22),
+    0 2px 4px rgba(11, 41, 68, .10),
+    0 8px 20px rgba(11, 41, 68, .16);
+  transition: transform .15s ease;
+}
+.fixed-cta--corner .line-icon { width: 28px; height: 28px; }
+.fixed-cta--corner .fixed-cta__btn:active .fixed-cta__main { transform: scale(.97); }
+
+/* 下部中央の緑ピル（控え）：余白を広めに取り、白いフチで本文から浮かせる */
+.fixed-cta--center {
+  left: 50%;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translate(-50%, 16px);
+}
+.fixed-cta--center.is-visible { transform: translate(-50%, 0); }
+.fixed-cta--center .fixed-cta__btn {
+  gap: 12px;
+  height: 58px;
+  padding: 0 32px 0 18px;
+  border-radius: 999px;
+  background: var(--line-green); color: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .92), 0 10px 26px rgba(6, 199, 85, .35);
+}
+.fixed-cta--center .fixed-cta__btn:hover { color: #fff; opacity: .92; }
+.fixed-cta--center .line-icon { width: 30px; height: 30px; }
+.fixed-cta--center .fixed-cta__label { font-size: 16px; font-weight: 700; line-height: 1; letter-spacing: .04em; white-space: nowrap; }
+
+/* 右下の白地ピル（控え）：LINE公式アイコン（緑）＋ネイビー文字＋小さな矢印 */
+.fixed-cta--pill {
+  right: 14px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translateY(16px);
+}
+.fixed-cta--pill .fixed-cta__btn {
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--navy);
+  box-shadow: 0 6px 20px rgba(11, 41, 68, .18);
+}
+.fixed-cta--pill .fixed-cta__btn:hover { color: var(--navy); }
+.fixed-cta--pill .line-icon { width: 40px; height: 40px; }
+.fixed-cta--pill .fixed-cta__label { font-size: 14px; font-weight: 700; line-height: 1; white-space: nowrap; }
+.fixed-cta--pill .fa-chevron-right { font-size: 11px; color: var(--line-green); }
+
+/* 右端の縦タブ（控え） */
+.fixed-cta--tab {
+  right: 0;
+  bottom: calc(112px + env(safe-area-inset-bottom));
+  transform: translateX(110%);
+}
+.fixed-cta--tab .fixed-cta__btn {
+  flex-direction: column; gap: 8px;
+  width: 44px;
+  padding: 12px 0 14px;
+  border-radius: 12px 0 0 12px;
+  background: var(--line-green); color: #fff;
+  box-shadow: -4px 4px 14px rgba(11, 41, 68, .18);
+}
+.fixed-cta--tab .fixed-cta__btn:hover { color: #fff; opacity: .92; }
+.fixed-cta--tab .line-icon { width: 26px; height: 26px; }
+.fixed-cta--tab .fixed-cta__label {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  /* 「ＬＩＮＥ」はHTML側で全角にして、漢字・かなと同じ正方形の字幅で縦に積む */
+  font-size: 13px; font-weight: 700; line-height: 1;
+  letter-spacing: .1em;
+}
 
 /* =========================================================
    下層ページ共通（5-2で新デザインに合わせて調整予定）
@@ -986,7 +1097,6 @@ body.has-fixed-cta { padding-bottom: 76px; }
   .footer-legal__links a::after { content: none; }
   .footer-legal small { margin-left: auto; }
   .fixed-cta { display: none; }
-  body.has-fixed-cta { padding-bottom: 0; }
 
   /* 下層ページ（5-2で調整予定） */
   .page-title { padding: 64px 48px 56px; gap: 8px; }

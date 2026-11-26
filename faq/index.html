@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261126ac">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261126ba">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
   <nav class="gnav" aria-label="グローバルナビ">
     <a href="../service/">サービス内容</a><a href="../price/">料金プラン</a><a href="../flow/">ご利用の流れ</a><a href="../faq/" aria-current="page">よくある質問</a>
   </nav>
-  <a class="btn btn--line header-cta" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener">LINEで相談する</a>
+  <a class="btn btn--line header-cta" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener"><img class="line-icon" src="../assets/img/line-icon-reverse.svg" alt="" width="32" height="32">LINEで相談する</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sp-menu" aria-label="メニューを開く"><span></span><span></span><span></span></button>
   <div class="sp-menu" id="sp-menu">
     <ul>
@@ -27,21 +27,22 @@
       <li><a href="../flow/">ご利用の流れ</a></li>
       <li><a href="../faq/" aria-current="page">よくある質問</a></li>
     </ul>
-    <a class="btn btn--line" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener">LINEで相談する</a>
+    <a class="btn btn--line" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener"><img class="line-icon" src="../assets/img/line-icon-reverse.svg" alt="" width="32" height="32">LINEで相談する</a>
   </div>
 </header>
 
 <main>
 <div class="page-title" data-cta-trigger>
+  <span class="sec-head__icon" aria-hidden="true"><i class="fa-solid fa-question"></i></span>
   <span class="page-title__en">FAQ</span>
   <h1>よくある質問</h1>
-  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="../">トップ</a> ＞ よくある質問</nav>
+  <nav class="breadcrumb" aria-label="パンくずリスト"><a href="../">トップ</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i><span aria-current="page">よくある質問</span></nav>
 </div>
 
 <section class="page-body">
-  <nav class="faq-chips" aria-label="カテゴリ"><a href="#price">料金・契約</a><a href="#make">制作</a><a href="#update">公開後の更新</a><a href="#cancel">解約</a><a href="#other">その他</a></nav>
+  <nav class="faq-chips" aria-label="カテゴリ"><a href="#price">料金・契約<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a><a href="#make">制作<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a><a href="#update">公開後の更新<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a><a href="#cancel">解約<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a><a href="#other">その他<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a></nav>
   <div class="faq-cat" id="price">
-    <h2>料金・契約</h2>
+    <h2 class="bar-head">料金・契約</h2>
     <div class="faq-list">
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">初期費用は本当に0円？</span><span class="faq__sign" aria-hidden="true"></span></summary>
@@ -58,15 +59,19 @@
     </div>
   </div>
   <div class="faq-cat" id="make">
-    <h2>制作</h2>
+    <h2 class="bar-head">制作</h2>
     <div class="faq-list">
       <details class="faq faq--sm">
-        <summary><b class="faq__q">Q</b><span class="faq__title">AIで作るとはどういうこと？品質は？</span><span class="faq__sign" aria-hidden="true"></span></summary>
-        <div class="faq__a">仮テキスト：AIで制作し、公開前に必ず人がレビューします。</div>
+        <summary><b class="faq__q">Q</b><span class="faq__title">納品までの期間は？</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__a">最短1日~2週間での公開が可能です。出来る限りの迅速な制作を心がけています。</div>
+      </details>
+      <details class="faq faq--sm">
+        <summary><b class="faq__q">Q</b><span class="faq__title">公開前のチェックは？</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__a">はい。公開前にスタッフがスマホ・パソコンでの表示や内容を確認し、テストアップでお客様にもご確認いただいてから公開します。</div>
       </details>
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">修正は何回まで？</span><span class="faq__sign" aria-hidden="true"></span></summary>
-        <div class="faq__a">仮テキスト：公開前はデザインを含め3回までです。</div>
+        <div class="faq__a">公開前のデザインの修正は3回までです。文章や写真の修正は回数に含まず、何度でも承ります。</div>
       </details>
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">原稿や写真の用意は必要？</span><span class="faq__sign" aria-hidden="true"></span></summary>
@@ -75,7 +80,7 @@
     </div>
   </div>
   <div class="faq-cat" id="update">
-    <h2>公開後の更新</h2>
+    <h2 class="bar-head">公開後の更新</h2>
     <div class="faq-list">
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">差し替えに回数制限は？</span><span class="faq__sign" aria-hidden="true"></span></summary>
@@ -92,7 +97,7 @@
     </div>
   </div>
   <div class="faq-cat" id="cancel">
-    <h2>解約</h2>
+    <h2 class="bar-head">解約</h2>
     <div class="faq-list">
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">解約方法は？</span><span class="faq__sign" aria-hidden="true"></span></summary>
@@ -109,7 +114,7 @@
     </div>
   </div>
   <div class="faq-cat" id="other">
-    <h2>その他</h2>
+    <h2 class="bar-head">その他</h2>
     <div class="faq-list">
       <details class="faq faq--sm">
         <summary><b class="faq__q">Q</b><span class="faq__title">直接会って相談することもできる？</span><span class="faq__sign" aria-hidden="true"></span></summary>
@@ -124,9 +129,9 @@
     <img class="cta__ill" src="../assets/img/cta-01.webp" alt="" width="400" height="400" loading="lazy">
     <div class="cta__body">
       <span class="cta__en">CONTACT</span>
-      <h2>まずはLINEで<br class="sp-only">気軽にご相談ください</h2>
+      <h2 class="u-line">まずはLINEで<br>気軽にご相談ください</h2>
       <p>友だち追加後、チャットで<br class="sp-only">ご質問だけでもお気軽にどうぞ。</p>
-      <a class="btn btn--line" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener">LINEで友だち追加する</a>
+      <a class="btn btn--line" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener"><img class="line-icon" src="../assets/img/line-icon-reverse.svg" alt="" width="32" height="32">LINEで友だち追加する</a>
     </div>
     <div class="cta__qr"><div class="cta__qr-img">LINE QR</div><span>スマホで読み取り</span></div>
   </div>
@@ -140,7 +145,7 @@
   </div>
   <div class="footer-legal">
     <div class="footer-legal__links"><a href="../terms/">利用規約</a><span class="footer-legal__sep" aria-hidden="true"></span><a href="../privacy/">プライバシーポリシー</a><span class="footer-legal__sep" aria-hidden="true"></span><a href="../tokushoho/">特定商取引法に基づく表記</a></div>
-    <small>© HP EXPRESS</small>
+    <small>© 2026 HP EXPRESS</small>
   </div>
 </footer>
 
@@ -148,6 +153,6 @@
   <a class="fixed-cta__btn" href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener"><span class="fixed-cta__bubble">ご質問だけでもOK</span><span class="fixed-cta__main"><img class="line-icon" src="../assets/img/line-icon-reverse.svg" alt="" width="32" height="32">LINEで相談する</span></a>
 </div>
 
-<script src="../assets/js/main.js?v=20261126ac"></script>
+<script src="../assets/js/main.js?v=20261126ba"></script>
 </body>
 </html>

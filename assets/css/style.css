@@ -363,6 +363,8 @@ em { font-style: normal; color: var(--blue-text); }
   gap: 18px;
 }
 .check-box .ck { font-size: 15px; line-height: 1.75; color: var(--text); }
+/* お悩み項目はチェック（＝解決済み）ではなく、グルグル目の困り顔（face-dizzy）で悩みの印象に */
+.check-box .ck::before { content: "\f567"; }
 .check-box em { font-weight: 700; }
 .worries__close { text-align: center; font-size: 20px; font-weight: 700; line-height: 1.6; color: var(--navy); }
 .worries__close::after { width: 120px; }
@@ -595,10 +597,22 @@ em { font-style: normal; color: var(--blue-text); }
   font-size: 12px; color: rgba(255, 255, 255, .75);
 }
 .footer-legal small { font-size: 11px; color: rgba(255, 255, 255, .5); }
-/* SP：3つのリンクを横幅いっぱいに均等配置。間に細い縦線 */
-.footer-legal__links { display: flex; align-items: center; justify-content: space-between; }
-.footer-legal__links a { white-space: nowrap; font-size: clamp(11px, 3.05vw, 12px); }
-.footer-legal__sep { width: 1px; height: 11px; background: rgba(255, 255, 255, .35); }
+/* SP：ロゴ・ナビと揃えて左揃え、1行に1つずつ縦に並べる（縦線はPCのみ）
+   ※比較案：横に流して折り返す版 → flex-direction を外し gap: 8px 24px; flex-wrap: wrap;
+   ※中央揃え版も試したが、左揃えの方が全体のまとまりが良いため不採用 */
+/* 右側が空かないよう、上のナビと同じ「横幅いっぱいの行＋右端の小さな矢印」で揃える（ナビより控えめなサイズ） */
+.footer-legal__links { display: flex; flex-direction: column; align-items: stretch; }
+.footer-legal__links a {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  white-space: nowrap; font-size: 12px;
+}
+.footer-legal__links a::after {
+  content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+  font-size: 9px; color: rgba(255, 255, 255, .35);
+}
+.footer-legal__sep { display: none; width: 1px; height: 11px; background: rgba(255, 255, 255, .35); }
 
 /* SP下部固定CTAバー（FV通過後に表示） */
 .fixed-cta {
@@ -945,9 +959,11 @@ body.has-fixed-cta { padding-bottom: 76px; }
   .footer-nav a::after { content: none; }
   .footer-legal { flex-direction: row; align-items: center; gap: 28px; font-size: 13px; border-top: 1px solid rgba(255, 255, 255, .3); padding-top: 24px; }
   .footer-legal small { font-size: 12px; }
-  .footer-legal__links { flex-direction: row; }
+  .footer-legal__links { flex-direction: row; align-items: center; }
   .footer-legal__links { justify-content: flex-start; gap: 16px; }
-  .footer-legal__links a { font-size: 13px; }
+  .footer-legal__sep { display: block; }
+  .footer-legal__links a { display: inline; height: auto; border: 0; font-size: 13px; }
+  .footer-legal__links a::after { content: none; }
   .footer-legal small { margin-left: auto; }
   .fixed-cta { display: none; }
   body.has-fixed-cta { padding-bottom: 0; }

@@ -822,12 +822,6 @@ body.has-fixed-cta { padding-bottom: 76px; }
 
   .reason p,
   .flow-card p,
-  main > .sec .faq__a {
-    font-size: 15px;
-  }
-
-  .reason p,
-  .flow-card p,
   main > .sec .check-box .ck,
   main > .sec .dot-list .ck,
   main > .sec .faq__a,

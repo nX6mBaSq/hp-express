@@ -207,6 +207,8 @@ em { font-style: normal; color: var(--blue-text); }
   position: relative;
   z-index: 30;
 }
+/* トップページだけ：ヘッダー下の区切り線を消し、白いヒーローエリアと一続きに見せる（下層ページは線ありのまま） */
+.site-header--top { border-bottom-color: transparent; }
 .menu-btn {
   width: 44px; height: 44px;
   border: 0;
@@ -257,7 +259,7 @@ em { font-style: normal; color: var(--blue-text); }
    トップ：ファーストビュー
    ========================================================= */
 .fv {
-  padding: 40px var(--gutter) 48px;
+  padding: 20px var(--gutter) 48px; /* ヘッダーの区切り線がないため、上は詰めてロゴ→見出しの間を他の余白と揃える */
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -981,7 +983,7 @@ em { font-style: normal; color: var(--blue-text); }
 
   /* FV */
   .fv {
-    padding: 80px var(--gutter) 96px;
+    padding: 48px var(--gutter) 88px;
     display: grid;
     grid-template-columns: 1fr 1.05fr;
     grid-template-areas: "text ill" "price ill" "badges ill" "cta ill";

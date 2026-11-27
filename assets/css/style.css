@@ -99,6 +99,8 @@ em { font-style: normal; color: var(--blue-text); }
 }
 .btn:hover { opacity: .85; }
 .btn .fa-arrow-right { font-size: 15px; }
+/* Noto Sans JP は字面がわずかに下がるので、文字だけ持ち上げてアイコン・矢印とボタンの中心にそろえる */
+.btn__label { position: relative; top: -.5px; }
 .btn--line { background: var(--line-green); color: #fff; }
 .btn--line:hover { color: #fff; }
 .btn--outline { background: #fff; color: var(--navy); border: var(--strong-border); }
@@ -674,6 +676,8 @@ em { font-style: normal; color: var(--blue-text); }
   transition: transform .15s ease;
 }
 .fixed-cta--corner .line-icon { width: 28px; height: 28px; }
+/* Noto Sans JP は line-height:1 だと字面が約1px下がるので、文字だけ持ち上げてアイコン・ボタンの中心にそろえる */
+.fixed-cta--corner .fixed-cta__label { transform: translateY(-1px); }
 .fixed-cta--corner .fixed-cta__btn:active .fixed-cta__main { transform: scale(.97); }
 
 /* 下部中央の緑ピル（控え）：余白を広めに取り、白いフチで本文から浮かせる */
@@ -1018,6 +1022,7 @@ em { font-style: normal; color: var(--blue-text); }
   .gnav a[aria-current="page"] { color: var(--blue-text); }
   .header-cta { display: flex; height: 52px; padding: 0 28px; font-size: 15px; }
   .header-cta .line-icon { width: 28px; height: 28px; }
+  .header-cta .btn__label { top: -1px; }
 
   /* セクション */
   .sec { padding: 104px var(--gutter); align-items: center; gap: 48px; }
